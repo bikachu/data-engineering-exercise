@@ -25,7 +25,7 @@ def run_multi_thread(iter_number):
     records = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
         futures = []
-        for i in [i for i in range(0, iter_number)]:
+        for i in [i for i in range(0, iter_number+1)]:
             future = executor.submit(get_records, i)
             futures.append(future)
         for future in concurrent.futures.as_completed(futures):
