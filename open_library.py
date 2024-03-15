@@ -29,8 +29,7 @@ def run_multi_thread(iter_number):
             future = executor.submit(get_records, i)
             futures.append(future)
         for future in concurrent.futures.as_completed(futures):
-            record = future.result()
-            records.extend(record)
+            records.extend(future.result())
     return spark.createDataFrame(records).dropDuplicates()
 
 
